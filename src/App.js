@@ -1,32 +1,44 @@
-
-import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import Vehicle from './Vehicle/vehicle';
 
-class App extends React.Component  {
-  constructor(props){
-    super(props);
-this.state={
-  vehicle:[
-    {VehicleType:"Car", Name: "Altroz", Manufacturer:"Tata", FuelType:"petrol"},
-    {VehicleType:"Car", Name: "Nexon", Manufacturer:"Tata", FuelType:"Electric"},
-    {VehicleType:"Car", Name: "XUV", Manufacturer:"Mahindra", FuelType:"Disel"},
-    {VehicleType:"Car", Name: "Baleno", Manufacturer:"Maruti Suzuki", FuelType:"petrol"},
-  ]
-}
+const App = props => {
+  const [vehicleState, setVehicleState] = useState(
+    {
+      vehicles: [
+        { VehicleType: "Car", Name: "Altroz", Manufacturer: "Tata", Fuel: "petrol" },
+        { VehicleType: "Car", Name: "Seltos", Manufacturer: "KIA", Fuel: "Disel" },
+        { VehicleType: "Car", Name: "Brezza", Manufacturer: "Tata", Fuel: "petrol" },
+        { VehicleType: "Car", Name: "Brezza", Manufacturer: "Tata", Fuel: "petrol" }
+
+      ]
+    }
+  );
+  const updateHandler = () => {
+    setVehicleState({
+      vehicles: [
+        { VehicleType: "Car", Name: "Jaguar XS", Manufacturer: "Tata", Fuel: "petrol" },
+        { VehicleType: "Car", Name: "Crysta", Manufacturer: "Tata", Fuel: "Disel" },
+        { VehicleType: "Car", Name: "Audi", Manufacturer: "Tata", Fuel: "petrol" },
+        { VehicleType: "Car", Name: "Thar", Manufacturer: "Tata", Fuel: "petrol" }
+      ]
+    });
   }
-   render(){
-     return(
-       <div>
-         <h1>List of Vehicle</h1> 
-         <Vehicle VehicleType={this.state.vehicles[0].VehicleType} Name={this.state.vehicles[0].Name} Manufacturer={this.state.vehicles[0].Manufacturer} FuelType={this.state.vehicles[0].FuelType}/>
-         <Vehicle VehicleType={this.state.vehicles[1].VehicleType} Name={this.state.vehicles[1].Name} Manufacturer={this.state.vehicles[1].Manufacturer} FuelType={this.state.vehicles[1].FuelType}/>
-         <Vehicle VehicleType={this.state.vehicles[2].VehicleType} Name={this.state.vehicles[2].Name} Manufacturer={this.state.vehicles[2].Manufacturer} FuelType={this.state.vehicles[2].FuelType}/>
-         <Vehicle VehicleType={this.state.vehicles[3].VehicleType} Name={this.state.vehicles[3].Name} Manufacturer={this.state.vehicles[3].Manufacturer} FuelType={this.state.vehicles[3].FuelType}/>
-         
-         </div>
-     );
-   };
-}
+  return (
+    <div className="App container-fluid">
+      <div className="row">
+        <h1> List of Vehicles </h1>
+        <button className="btn btn-Primary btn-lg buttonUpdate" onClick={updateHandler}>Update List</button>
+      </div>
+      <div className="row">
+        <Vehicle VehicleType={vehicleState.vehicles[0].VehicleType} Name={vehicleState.vehicles[0].Name} Manufacturer={vehicleState.vehicles[0].Manufacturer} Fuel={vehicleState.vehicles[0].Fuel} />
+        <Vehicle VehicleType={vehicleState.vehicles[1].VehicleType} Name={vehicleState.vehicles[1].Name} Manufacturer={vehicleState.vehicles[1].Manufacturer} Fuel={vehicleState.vehicles[1].Fuel} />
+        <Vehicle VehicleType={vehicleState.vehicles[2].VehicleType} Name={vehicleState.vehicles[2].Name} Manufacturer={vehicleState.vehicles[2].Manufacturer} Fuel={vehicleState.vehicles[2].Fuel} />
+        <Vehicle VehicleType={vehicleState.vehicles[3].VehicleType} Name={vehicleState.vehicles[3].Name} Manufacturer={vehicleState.vehicles[3].Manufacturer} Fuel={vehicleState.vehicles[3].Fuel} />
+      </div>
+    </div>
+  );
+};
+
 
 export default App;

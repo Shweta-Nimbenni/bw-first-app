@@ -1,14 +1,14 @@
-import './vehicle.css'
-const vehicle = props=> (
-    <div className='car'>
-<h1>
-vehicle :{props.vehicleType}
-</h1>
+import './vehicle.css';
 
-<p>Name:{props.Name}</p>
-<p>Manufacturer:{props.Manufacturer}</p>
-<p>Fuel:{props.Fuel}</p>
+const vehicle = props => (
+    <div className="vehicle col-lg-3">
+
+        <h1> Vehicle: {props.VehicleType}</h1>
+        <p>Name: {props.Name}</p>
+        <p>Manufacturer: {props.Manufacturer}</p>
+        <p>Fuel type: {props.Fuel}</p>
+
 
     </div>
-)
+);
 export default vehicle;
